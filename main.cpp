@@ -1,5 +1,5 @@
 //compute truth table with following parameters
-//!a	is negation of a
+//!a    is negation of a
 //a & b is a and b
 //a | b is a or b
 //a > b is a implies b
@@ -38,7 +38,7 @@ using namespace std;
 //classes
 class propositionalVariable
 {
-	putlic:
+	public:
 		char visibleName;	//will hold a letter (capital or lowercase)
 		bool hasNumber;		//tells if there is a number attached
 		int number;			//the attached number, will be ignored if hasNumber == false
