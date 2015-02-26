@@ -34,6 +34,7 @@ using namespace std;
 #define SUB_END ']'
 #define START_PARA '('
 #define END_PARA ')'
+#define BIG_MONEY '$'
 
 //classes
 class propositionalVariable
