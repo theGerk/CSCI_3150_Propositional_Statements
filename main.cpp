@@ -1,15 +1,15 @@
-//compute truth table with following paramaters
-//!a is not a
+//compute truth table with following parameters
+//!a	is negation of a
 //a & b is a and b
 //a | b is a or b
 //a > b is a implies b
 //a < b is b implies a
 //a = b is a biconditional b
 //a ~ b is a xor b
-//parantheses work as pern normal
+//parentheses work as per normal
 //spaces will be ignored
 //all letters are propositional variables
-//propositional variables can also be called by a[n], where n is an interger and a is any letters
+//propositional variables can also be called by a[n], where n is an integer and a is any letter
 //1 is true (unless in [])
 //0 is false (unless in [])
 
@@ -19,7 +19,7 @@
 #include <vector>
 #include <cmath>
 
-//use standard namespace
+//namespace declaration
 using namespace std;
 
 //operators
@@ -56,7 +56,7 @@ class compoundPropositionalStatement
 
 //function declarations
 string getConsoleLine();
-//retrives a line from console and returns it as a string
+//retrieves a line from console and returns it as a string
 
 bool prompt();
 //outputs "(Y/N)"
