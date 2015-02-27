@@ -63,3 +63,10 @@ bool prompt();
 //outputs "(Y/N)"
 //returns true if user inputs any of the following characters: 1, T, t, y, Y.
 //returns false if user inputs any of the following characters: 0, F, f, N, n.
+
+//main function
+int main()
+{
+	cout << "Hello World!\n";
+	return 0;
+}
