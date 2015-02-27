@@ -13,7 +13,7 @@
 //1 is true (unless in [])
 //0 is false (unless in [])
 
-//libraries
+//directives
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -49,7 +49,7 @@ class propositionalVariable
 class compoundPropositionalStatement
 {
 	vector<propositionalVariable> variables;	//this is all the variables in the statement
-	string statmentPrintout;
+	string statementPrintout;
 	public:
 		compoundPropositionalStatement(string);
 		//takes an input as a string and stores it 
@@ -60,13 +60,43 @@ string getConsoleLine();
 //retrieves a line from console and returns it as a string
 
 bool prompt();
-//outputs "(Y/N)"
-//returns true if user inputs any of the following characters: 1, T, t, y, Y.
-//returns false if user inputs any of the following characters: 0, F, f, N, n.
+//requires iostream
+//outputs "(Y/N) " to console, then requests console input
+//returns true if user inputs any of the following characters: 1, T, t, y, Y
+//returns false if user inputs any of the following characters: 0, F, f, N, n
+//trashes invalid input and re-requests console input
 
 //main function
 int main()
 {
 	cout << "Hello World!\n";
 	return 0;
+}
+
+//function definitions (move to shared object files)
+bool prompt() {
+	cout << "(Y/N) ";
+	char input;
+	while(true) {
+		cin >> input;
+		switch(input){
+		case '1':
+		case 'T':
+		case 't':
+		case 'Y':
+		case 'y':
+			return true;
+		case '0':
+		case 'F':
+		case 'f':
+		case 'N':
+		case 'n':
+			return false;
+		default:
+			cout << "Invalid input.\n(Y/N) ";
+			cin.clear();
+			cin.ignore(10000,'\n');
+			break;
+		}
+	}
 }
