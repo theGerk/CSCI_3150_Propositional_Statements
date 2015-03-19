@@ -1,0 +1,41 @@
+# Project: CSCI_3150_Propositional_Statements
+# Makefile created by Dev-C++ 5.4.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o notmin_prompt.o notmin_getconsoleline.o notmin_terminate.o thegerk_compoundpropositionalstatement.o
+LINKOBJ  = main.o notmin_prompt.o notmin_getconsoleline.o notmin_terminate.o thegerk_compoundpropositionalstatement.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"
+BIN      = CSCI_3150_Propositional_Statements.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+notmin_prompt.o: notmin_prompt.cpp
+	$(CPP) -c notmin_prompt.cpp -o notmin_prompt.o $(CXXFLAGS)
+
+notmin_getconsoleline.o: notmin_getconsoleline.cpp
+	$(CPP) -c notmin_getconsoleline.cpp -o notmin_getconsoleline.o $(CXXFLAGS)
+
+notmin_terminate.o: notmin_terminate.cpp
+	$(CPP) -c notmin_terminate.cpp -o notmin_terminate.o $(CXXFLAGS)
+
+thegerk_compoundpropositionalstatement.o: thegerk_compoundpropositionalstatement.cpp
+	$(CPP) -c thegerk_compoundpropositionalstatement.cpp -o thegerk_compoundpropositionalstatement.o $(CXXFLAGS)
