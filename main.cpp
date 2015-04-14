@@ -31,10 +31,14 @@ using namespace std;
 #define IMPLIED_BY '<'
 #define BICONDITINAL '='
 #define XOR '~'
-#define SUB_START '['
-#define SUB_END ']'
 #define START_PARA '('
 #define END_PARA ')'
+
+//constants
+#define S_TRUE '1'
+#define S_FALSE '0'
+#define TRUE_CHARACTER 		//this will be determined later
+#define FALSE_CHARACTER 	//this will be determined later
 
 //main function
 int main()
