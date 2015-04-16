@@ -7,14 +7,23 @@
 #include <cmath>
 using namespace std;
 
+struct variable;										//a variable with a name and value
+class operand;											//either a variable or an expression
+class expression;										//a simple propositinonal statment with 2 operands and 1 operator
+class compoundPropositionalStatement(string intput);	//an entire propositional statment
+class operatorType;										//class for operator
+
 
 int getInt(const &string input, int start);
+//uses cstring
 //gets an interger out of a string starting from any position
 
 int getInt(const &string input);
+//uses cstring
 //gets an interger out of a string starting from position 0.
 
 int getLengthOfInt(const string& input, unsigned int start);
+//uses cstring
 //uses a string and finds the length of a number starting at location start
 
 void pause();

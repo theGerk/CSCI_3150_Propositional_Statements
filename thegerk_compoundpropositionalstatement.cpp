@@ -1,4 +1,6 @@
 #include 'thegerk.h'
+#include <cstring>
+#include <vector>
 using namespace std;
 class compoundPropositionalStatement
 {
@@ -22,7 +24,7 @@ class compoundPropositionalStatement
 	void format();
 	//formats the statementString to look nice
 
-	//Benji
+	//Benji - Complete
 	void setupVars();
 	//fills up the "variables" vector using the statementString
 
