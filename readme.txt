@@ -15,15 +15,3 @@ void clean(string& input);
 //cleans up a string
 //takes out loose parentheses
 //takes out parantheses that are pointlessly surrounding the entire string
-
-//not taken
-bool isLetter(const char& input);
-//returns true if the character is a letter a-z or A-Z
-
-//not taken
-bool isOperater(const char& input);
-//returns true if the character is an operator (one of them used in the program)
-
-//not taken
-bool isNumber(const char& input);
-//returns true if the character is a number 0-9
