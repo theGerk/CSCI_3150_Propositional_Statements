@@ -9,7 +9,7 @@
 #define BICONDITINAL '='
 #define XOR '~'
 
-bool isOperator(const char input)
+bool isOperator(const char& input)
 {
 	switch(input)
 	{
