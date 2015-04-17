@@ -72,3 +72,9 @@ bool isNumber(const char& input);
 
 bool isBlankSpace(const char& input);
 //returns true if the character is a tab, space, or newline
+
+void clean(string& input);
+//uses cstring, iostream
+//cleans up a string
+//takes out loose parentheses
+//takes out parantheses that are pointlessly surrounding the entire string

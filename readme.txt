@@ -11,7 +11,5 @@ unsigned int location_of_last_operation(const &string statement);
 //finds the place in the string of the last operator.
 
 //not taken
-void clean(string& input);
-//cleans up a string
-//takes out loose parentheses
-//takes out parantheses that are pointlessly surrounding the entire string
+void removeCharFromString(std::string& input, unsigned int position);
+//remove the character at position given from the string and move the rest of the characters back 1 space to shorten the string.

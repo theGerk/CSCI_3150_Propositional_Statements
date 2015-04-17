@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000001000000
-UnitCount=24
+UnitCount=25
 
 [VersionInfo]
 Major=1
@@ -271,7 +271,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit25]
-FileName=thegerk_compoundPropositionalStatement_setupVars.cpp
+FileName=thegerk_clean.cpp
 CompileCpp=1
 Folder=
 Compile=1
