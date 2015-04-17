@@ -20,10 +20,10 @@ std::string compoundPropositionalStatement::getUsableString() const
 				do {i++;} while(statementString[i] == ' ' || statementString == '\n' || statementString == '\t' || (statementString >= '0' && statementString <= '9'));
 		}
 
-		else if(statementString[i] == S_TRUE)
-			output += TRUE_CHARACTER;
-		else if(statementString[i] == S_FALSE)
-			output += FALSE_CHARACTER;
+		else if(statementString[i] == S_TRUE())
+			output += TRUE_CHARACTER();
+		else if(statementString[i] == S_FALSE())
+			output += FALSE_CHARACTER();
 
 		else
 		{

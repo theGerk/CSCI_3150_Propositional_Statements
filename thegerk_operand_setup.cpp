@@ -1,4 +1,6 @@
 #include 'thegerk.h'
+#include 'thegerk_operand.cpp'
+#include 'thegerk_expression.cpp'
 #include <cstring>
 #include <iostream>
 
@@ -16,14 +18,77 @@
 //constants
 #define S_TRUE '1'
 #define S_FALSE '0'
-#define TRUE_CHARACTER 		//this will be determined later
-#define FALSE_CHARACTER 	//this will be determined later
+#define TRUE_CHARACTER 	'T'	//this will be determined later
+#define FALSE_CHARACTER 'F'	//this will be determined later
 
 void operand::setup(string input, const vector<variable> vars)
 {
 	clean(input);
+	
+	//empty
+	if(input[0] == NULL)
+	{
+		cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
+		cout << "The string, which is empty is: " << input << endl;
+		cout << "This should only happen if there is a unary operator! Otherwise a bug exists." << endl;
+		pause();		
+	}
+	
+	//constants
+	else if(input[0] == TRUE_CHARACTER() || input[0] == FALSE_CHARACTER())
+	{
+		switch(input.length())
+		{
+			//constant
+			case: 1
+				constant = (input[0] == FALSE_CHARACTER) ? false : true;
+				break;
+			//expression
+			default:
+			
+				cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
+				cout << "The string, which still has at least 1 epsression is: " << input << endl;
+				cout << "If there is more then one expression then a bug exists." << endl;
+				pause();
+				expr.setup(input, vars);
+				break;
+		}
+	}
+	
+	//variables
+	else if(isNumber(input[0]))
+	{
+		//variable
+		if(input.length() = getLengthOfInt(input));
+		{
+			cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
+			cout << "The string, which is only a number: " << input << endl;
+			cout << "If there is anything other then a number in the string you have a bug." << endl;\
+			pause();
+			var = &(vars[getInt(input)]);
+		}
+		//expression
+		else
+		{
+			cout << "The string, which still has at least 1 epsression is: " << input << endl;
+			cout << "If there is more then one expression then a bug exists." << endl;
+			pause();
+			expr.setup(input, vars);
+		}
 
 
+	}
+	
+	//unary operators
+	else
+	{
+		cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
+		cout << "The string, which starts with a unary operator: " << input << endl;
+		cout << "If it is not starting with a unary operator you have a bug." << endl;
+		pause()
+		expr.setup(input, vars);
+	}
+	/*
 	//find which type of operator to set
 	//check for constant
 	switch(input[0])
@@ -97,4 +162,5 @@ void operand::setup(string input, const vector<variable> vars)
 			expr.setup(input, vars);
 			break;
 	}
+	*/
 }

@@ -13,6 +13,23 @@ class expression;										//a simple propositinonal statment with 2 operands an
 class compoundPropositionalStatement(string intput);	//an entire propositional statment
 class operatorType;										//class for operator					NOT YET EXISTING			DOES IT NEED TO?
 
+//Defined Constants
+//operators
+char NOT();
+char AND();
+char OR();
+char IMPLIES();
+char IMPLIED_BY();
+char BICONDITIONAL();
+char XOR();
+char START_PARA();
+char END_PARA();
+
+//constants
+char S_TRUE();
+char S_FALSE();
+char TRUE_CHARACTER();
+char FALSE_CHARACTER();
 
 int getInt(const &string input, int start);
 //uses cstring
