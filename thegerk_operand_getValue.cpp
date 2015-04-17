@@ -9,7 +9,7 @@ bool operand::getValue() const
 		case: 0
 			return expr.evaluate();
 		case: 1
-			return (*var).value;
+			return var->value;
 		case: 2
 			return constant;
 	}
