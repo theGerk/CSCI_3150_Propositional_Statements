@@ -11,7 +11,7 @@ struct variable;										//a variable with a name and value
 class operand;											//either a variable or an expression
 class expression;										//a simple propositinonal statment with 2 operands and 1 operator
 class compoundPropositionalStatement(string intput);	//an entire propositional statment
-class operatorType;										//class for operator
+class operatorType;										//class for operator					NOT YET EXISTING			DOES IT NEED TO?
 
 
 int getInt(const &string input, int start);
@@ -27,16 +27,19 @@ int getLengthOfInt(const string& input, unsigned int start);
 //uses a string and finds the length of a number starting at location start
 
 void pause();
+//ueses iostream
 //pauses program, useful for testing code
 
-bool isUnary(char Operator);
+bool isUnary(const char& Operator);
 //finds if the inputed Operator is unary and returns true if it is
 //returns false if it is not
 
 string convertToString(int input);
+//uses cstring
 //takes the interger input and outputs it as a string in base 10
 
 char removeFirstDiget(int& input);
+//uses cmath
 //takes off first diget from input
 //returns it as a character (one may add 48 to find the character value)
 

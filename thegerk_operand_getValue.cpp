@@ -1,5 +1,6 @@
 #include 'thegerk.h'
-#include <cstring>
+#include 'thegerk_operand.cpp'
+#include 'thegerk_expression.cpp'
 using namespace std;
 bool operand::getValue() const
 {

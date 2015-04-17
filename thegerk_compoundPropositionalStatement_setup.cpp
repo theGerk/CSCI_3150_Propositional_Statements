@@ -1,3 +1,4 @@
+#include 'thegerk_compoundPropositionalStatement.cpp'
 #include 'thegerk.h'
 using namespace std;
 void compoundPropositionalStatement::setup()

@@ -1,6 +1,9 @@
 #include 'thegerk.h'
+#include 'thegerk_expression.cpp'
+#include 'thegerk_operand.cpp'
 #include <cstring>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 void expression::setup(const string& input, const vector<variable>& vars)

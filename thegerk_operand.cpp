@@ -1,4 +1,7 @@
 #include 'thegerk.h'
+#include 'thegerk_expression.cpp'
+#include <cstring>
+#include <vector>
 using namespace std;
 class operand
 {

@@ -1,4 +1,5 @@
 #include 'thegerk.h'
+#include 'thegerk_compoundPropositionalStatement.cpp'
 #include <cstring>
 using namespace std;
 
