@@ -10,29 +10,7 @@ void compoundPropositionalStatment::setupVars()
 	{
 		if(isLetter(statementString[i]))
 		{
-			//build temp string (variableName)
-			string temp;
-			string temp = statementString[i];
-			i++;
-			while(isNumber(statementString[i]) || isBlankSpace(statementString[i]))
-			{
-				if(isNumber(statementString[i]))
-					temp+=statementString[i]
-			}
-			i--;
-			
-			//see if it already exists
-			bool newVar = true;
-			for(int j = 0; j < variables.size(); j++)
-			{
-				if(variables[j].variableName == temp)
-				{
-					newVar = false;
-					break;
-				}
-			}
-			
-			if(newVar)
+			if(findVar(i) < 0)
 			{
 				variables.resize(variables.size()+1);
 				variables[variables.size()-1].variableName = temp;

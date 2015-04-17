@@ -1,6 +1,7 @@
 //Project: CSCI_3150_Propositional_Statements
 //contributions by theGerk
 
+#include 'notmin.h'
 #include <iostream>
 #include <cstring>
 #include <vector>

@@ -29,8 +29,9 @@ class compoundPropositionalStatement
 	void setupVars();
 	//fills up the "variables" vector using the statementString
 
-	//not taken
+	//Benji - Complete
 	int findvar(int locationInStatmentString) const;
+	//returns -1 if it is not found
 	//finds the specific variable in the vector and returns its location in said vector
 
 	public:
