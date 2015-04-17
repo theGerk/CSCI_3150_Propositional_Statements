@@ -27,9 +27,9 @@ std::string compoundPropositionalStatement::getUsableString() const
 
 		else
 		{
-				std::cout << "Remove me for final program!\nI'm located in: string compoundPropositionalStatement::getUsableString() const" << endl;
-				std::cout << "There is an illegitamite character or the function is broken, you have a bug." << endl;
-				std::cout << "The character in question is: " << statementString[i] << endl;
+				std::cout << "Remove me for final program!\nI'm located in: string compoundPropositionalStatement::getUsableString() const" << std::endl;
+				std::cout << "There is an illegitamite character or the function is broken, you have a bug." << std::endl;
+				std::cout << "The character in question is: " << statementString[i] << std::endl;
 				pause();
 
 		}
