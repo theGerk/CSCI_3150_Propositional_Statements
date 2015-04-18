@@ -1,0 +1,538 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "//compute truth table with following parameters\n\n//SYNTAX FOR PROGRAM\n//!a    is negation of a 					using '-' may make more sense as in a negitive\n//a & b is a and b\n//a | b is a or b\n//a > b is a implies b\n//a < b is b implies a\n//a = b is a biconditional b\n//a ~ b is a xor b\n//parentheses work as per normal\n//spaces will be ignored\n//all letters are propositional variables\n//propositional variables can also be called by an, where n is an integer and a is any letter\n//1 is true (unless after a letter)\n//0 is false (unless after a letter)\n\n\n//order of operations (left to right default)\n//1st:\n//	!\n//2rd:\n//	&\n//	|\n//3th:\n//	>\n//	<\n//	=\n//	~\n\n//libraries\n#include <iostream>\n#include <cstring>\n#include <vector>\n#include <cmath>\n\n//namespace declaration\nusing namespace std;\n\n//operators\n#define NOT '!'\n#define AND '&'\n#define OR '|'\n#define IMPLIES '>'\n#define IMPLIED_BY '<'\n#define BICONDITINAL '='\n#define XOR '~'\n#define START_PARA '('\n#define END_PARA ')'\n\n//constants\n#define S_TRUE '1'\n#define S_FALSE '0'\n#define TRUE_CHARACTER 	'T'	//this will be determined later\n#define FALSE_CHARACTER 'F'	//this will be determined later\n\n\n//IMPORTANT NOTES:\n//Every function declaration will have a comment above it saying either; \"not taken\", a name, or \"complete\" - name.\n//	NOTE: this is only for the declaration, not the definition, if you don't know the difference ask me (Benji).\n//The name refers to the person who is either working on it or has completed it, if multiple people worked on one function then put all names down.\n//If function is not taken then anyone may replace that line with their name to claim the function.\n//YOU SHOUD SYNC TO THE MASTER AFTER YOU CLAIM THE FUNTION SO THAT NO ONE ELSE TAKES IT AFTER YOU STARTED!!!\n//	If someone wants to for any reason stop work on one function they should...\n//	1. Make sure the code they already have written is easily readable and has sufficent comments to explain everything.\n//	2. Make it clear that they wrote which parts they wrote.\n//		Acceptable method of showing this would be the following syntax\n/*\n//BENJI START\ncode\ncode\ncode\n//BENJI END\n*/\n//	3. Upload the code to the master copy\n//	4. Mark the function as not taken (started)\n//\n//Anything that might be used repeatedly or would just look nicer as a function should be made as a seperate function.\n//\n//When you update teh master file make sure that your not deleteing someone else's changed work, I find copying the changed work into your file (in the appropriate place) gets around this best.\n\n// Forward declarationstion of classes and structs\nstruct variable;										//a variable with a name and value\nclass operand;											//either a variable or an expression\nclass expression;										//a simple propositinonal statment with 2 operands and 1 operator\nclass compoundPropositionalStatementn(string intput);	//an entire propositional statment\nclass operatorType										//class for operator\n\n\n//function declarations\n//not taken\nstring getConsoleLine();\n//retrieves a line from console and returns it as a string\n\n//not taken\nstring getFileLine(ifstream& file);\n//retrives a line from inputed file stream and returns it as a string\n\n//Complete - Max\nbool prompt();\n//outputs \"(Y/N)\" to console\n//returns true if user inputs any of the following characters: 1, T, t, y, Y.\n//returns false if user inputs any of the following characters: 0, F, f, N, n.\n\n//Complete - Benji\nint getInt(const &string input, int start);\n//gets an interger out of a string starting from any position\n\n//Complete - Benji\nint getInt(const &string input);\n//gets an interger out of a string starting from position 0.\n\n//Charlie\nunsigned int location_of_last_operation(const &string statement);\n//finds the place in the string of the last operator.\n\n//not taken\nvoid clean(string& input);\n//cleans up a string\n//takes out loose parentheses\n//takes out parantheses that are pointlessly surrounding the entire string\n\n//Complete - Benji\nint getLengthOfInt(const string& input, unsigned int start);\n//uses a string and finds the length of a number starting at location start\n\n//Complete - Benji\nvoid pause();\n//pauses program, useful for testing code\n\n//Complete - Benji\nbool isUnary(char Operator);\n//finds if the inputed Operator is unary and returns true if it is\n//returns false if it is not\n\n//Benji - Complete\nstring convertToString(int input);\n//takes the interger input and outputs it as a string in base 10\n\n//Benji - Complete\nchar removeFirstDiget(int& input);\n//takes off first diget from input\n//returns it as a character (one may add 48 to find the character value)\n\n//not taken\nbool isLetter(const char& input);\n//returns true if the character is a letter a-z or A-Z\n\n//not taken\nbool isOperater(const char& input);\n//returns true if the character is an operator (one of them used in the program)\n\n//not taken\nbool isNumber(const char& input);\n//returns true if the character is a number 0-9\n\n//not taken\nbool isBlank_Space(const char& input);\n//returns true if the character is a tab, space, or newline\n\n\n\n//Definitions\n//structures\nstruct variable\n{\n	string variableName;	//the symbolic name of the variable\n	bool value;				//the value of the propositional variable\n};\n\nclass operand\n{\n	//private member variables\n	unsigned char varInUse;	//says which member variable is bing used\n	// 0 --> expr\n	// 1 --> var\n	// 2 --> constant\n\n	//ONLY 1 MAY BE USED\n	expression expr;\n	variable *var;\n	bool constant;\n\n	public:\n		//public member functions\n		//Benji - Complete\n		void setup(string input, const vector<variable>& vars);\n\n		//Benji - Complete\n		bool getValue() const;\n		//evaluates if it is true or false and returns value\n};\n\nclass expression\n{\n	//private member vars\n	operand left;		//operand evaluated agaisnt the second operand 			Think of as left of the operator\n	char Opeartor;		//this is the operator that is applied to the right and left\n	operand right;		//operand evaluated against by the first 				Think of as right of the operator\n	\n	public:\n		//public member functions\n		//Benji - Complete\n		void setup(const string& input, const vector<variable>& vars);\n		//sets up the expression (left operator and right)\n\n		//not taken\n		bool evaluate() const;\n		//evaluaes the expression\n};\n\n\nclass compoundPropositionalStatement\n{\n	//private member vars\n	vector<variable> variables;	//This is all the variables in the statement.\n	string statementString;		//The statement saved as a nicely formated string ie: spaces.\n	expression expr;			//the last expression to be evaluated in the statement.\n	\n	//private member functions\n	//Benji - Complete\n	string getUsableString() const;\n	//returns a String.  Using the statementString, replaces any variables with their location in variables written out as the characters of a number\n	//the output also has any constants labled in some way to be determined later, when setting them (constants) equal to something use FALSE_CHARACTER or TRUE_CHARACTER\n	//also no spaces in the rutrned \n\n	//Benji - Complete\n	void setup();\n	//sets up variables and expression expressions for statement\n\n	//not taken\n	void format();\n	//formats the statementString to look nice\n\n	//Benji\n	void setupVars();\n	//fills up the \"variables\" vector using the statementString\n\n	//not taken\n	int findvar(int locationInStatmentString) const;\n	//finds the specific variable in the vector and returns its location in said vector\n\n	public:\n		//public member functions\n		//Benji - Complete\n		compoundPropositionalStatement(const string& input);	//CONSTRUcTOR\n		//takes an input as a string and stores it nicely\n\n		//THESE NEXT THREE FUNCTIONS SHOULD ALL CALL ANOTHER FUNCTION AND THEY JUST SET UP THAT FUNCTION CORRECTLY\n		//not taken\n		void printTruthTableConsole() const;\n		//prints truth table to console\n\n		//not taken\n		void printTruthTableFile(stirng fileName) const;\n		//prints truth table to a file\n\n		//not taken\n		void appendTruthTableFile(string fileName) const;\n		//appends truth table to a file\n\n		//not taken\n		void save() const;\n		//prompts the user for the file it should be saved to and then appends string to that file\n};\n\n\n//functions\nbool prompt() {\n	cout << \"(Y/N) \";\n	char input;\n	while(true) {\n		cin >> input;\n		switch(input){\n		case '1':\n		case 'T':\n		case 't':\n		case 'Y':\n		case 'y':\n			return true;\n		case '0':\n		case 'F':\n		case 'f':\n		case 'N':\n		case 'n':\n			return false;\n		default:\n			cout << \"Invalid input.\\n(Y/N) \";\n			cin.clear();\n			cin.ignore(10000,'\\n');\n			break;\n		}\n	}\n}\n\nint getInt(const string& input, int start)\n{\n	int output = 0;\n	int i = getLengthOfInt(input.substr(start, string::npos), start);\n	for(int j = 1; i > start; j *= 10)\n	{\n		i--;\n		output += (input[i] - 48) * j;\n	}\n	return output;\n}\n\nint getInt(const string& input)	{return getInt(input, 0);}\n\nvoid compoundPropositionalStatement::setup()\n{\n	expr.setup(getUsableString(), variables);																//Error maybe?\n	//If above code is unacceptable then use code bellow although it will be signifigantly worse\n	// string a = getUsableString();\n	// expr.setup(getUsableString(), variables);\n}\n\ncompoundPropositionalStatement::compoundPropositionalStatement(const string& input)\n{\n	statementString = input;\n	format();\n	setup();\n}\n\nvoid expression::setup(const string& input, const vector<variable>& vars)\n{\n	//Find last oppeartion to do and split apart string around.\n	const int seperator = location_of_last_operation(input);\n\n\n	//split into substrings and feed to operands\n	left.setup(input.substr(0, seperator), vars);\n	right.setup(input.substr(seperator + 1, string::npos), vars);\n\n	//set up operator\n	Operator = substr[seperator];\n\n	//look at what is in the left string, is it empty, does it just have parentheses?\n	if(isUnary(input[seperator]))\n	{\n		cout << \"Remove me for final program!\\nI'm located in: void expression::setup(const string& input, const vector<variable>& vars)\" << endl;\n		cout << \"Full string: \\\"\" << input << endl;\n		cout << \"Left string: \\\"\" << input.substr(0, seperator) << endl;\n		cout << \"Opeartor: \" << input[seperator] << endl;\n		cout << \"Right string: \\\"\" < input.substr(seperator + 1, string::npos) << endl;\n		pause();\n	}\n}\n\nvoid pause()\n{\n	char p;\n	cout << \"Please input a character to continue:\";\n	do\n	{\n		cin >> p;\n		if(!(cin << ignore))\n		{\n			cin.clear();\n			cout << \"That is not a valid input\"\n		}\n		cin.ignore(10000, '\\n');\n	}\n}\n\nbool operand::getValue() const\n{\n	switch(varInUse)\n	{\n		case: 0\n			return expr.evaluate();\n		case: 1\n			return (*var).value;\n		case: 2\n			return constant;\n	}\n}\n\nvoid operand::setup(string input, const vector<variable> vars)\n{\n	clean(input);\n\n\n	//find which type of operator to set\n	//check for constant\n	switch(input[0])\n	{\n		//empty\n		case: NULL\n			cout << \"Remove me for final program!\\nI'm located in: void operand::setup(string input, const vector<variable>& vars)\" << endl;\n			cout << \"The string, which is empty is: \" << input << endl;\n			cout << \"This should only happen if there is a unary operator! Otherwise a bug exists.\" << endl;\n			pause();\n			break;\n\n		//constants\n		case: TRUE_CHARACTER\n		case: FALSE_CHARACTER\n			switch(input.length())\n			{\n				//constant\n				case: 1\n					constant = (input[0] == FALSE_CHARACTER) ? false : true;\n					break;\n				//expression\n				default:\n				\n					cout << \"Remove me for final program!\\nI'm located in: void operand::setup(string input, const vector<variable>& vars)\" << endl;\n					cout << \"The string, which still has at least 1 epsression is: \" << input << endl;\n					cout << \"If there is more then one expression then a bug exists.\" << endl;\n					pause();\n					expr.setup(input, vars);\n					break;\n			}\n			break;\n\n		//variables\n		case: '0'\n		case: '1'\n		case: '2'\n		case: '3'\n		case: '4'\n		case: '5'\n		case: '6'\n		case: '7'\n		case: '8'\n		case: '9'\n			switch(input.length())\n			{\n				//variable\n				case: getLengthOfInt(input)\n					cout << \"Remove me for final program!\\nI'm located in: void operand::setup(string input, const vector<variable>& vars)\" << endl;\n					cout << \"The string, which is only a number: \" << input << endl;\n					cout << \"If there is anything other then a number in the string you have a bug.\" << endl;\\\n					pause();\n					var = &(vars[getInt(input)]);\n					break;\n				//expression\n				default:\n					cout << \"Remove me for final program!\\nI'm located in: void operand::setup(string input, const vector<variable>& vars)\" << endl;\n					cout << \"The string, which still has at least 1 epsression is: \" << input << endl;\n					cout << \"If there is more then one expression then a bug exists.\" << endl;\n					pause();\n					expr.setup(input, vars);\n					break;\n			}\n		\n		//unary operators\n		default:\n			cout << \"Remove me for final program!\\nI'm located in: void operand::setup(string input, const vector<variable>& vars)\" << endl;\n			cout << \"The string, which starts with a unary operator: \" << input << endl;\n			cout << \"If it is not starting with a unary operator you have a bug.\" << endl;\n			pause()\n			expr.setup(input, vars);\n			break;\n	}\n}\n\nint getLengthOfInt(const string& input, unsigned int start)\n{\n	int i;\n	for(i = start; input[i] >= '0' && input[i] <= '9'; i++);\n	return i;\n}\n\nstring compoundPropositionalStatement::getUsableString() const\n{\n	string output;\n	for(int i = 0; i < statementString.length(); i++)\n	{\n		switch(statementString[i])\n		{\n			//if space then delete\n			case: ' '\n			case: '/t'\n			case: '/n'\n				break;\n\n			//if operator then leave alone			ADD NEW OPERATORS IF ANY ARE MADE (extestential and universal may be delt with differently)\n			case: NOT\n			case: AND\n			case: OR\n			case: XOR\n			case: BICONDITINAL\n			case: IMPLIES\n			case: IMPLIED_BY\n				output += statementString[i];\n				break;\n\n			//if constant then change to TRUE_CHARACTER or FALSE_CHARACTER\n			case: S_TRUE\n				output += TRUE_CHARACTER;\n			case: S_FALSE\n				output += FALSE_CHARACTER;\n\n			//if a variable then switch to location in variable vector\n			case: 'a'\n			case: 'b'\n			case: 'c'\n			case: 'd'\n			case: 'e'\n			case: 'f'\n			case: 'g'\n			case: 'h'\n			case: 'i'\n			case: 'j'\n			case: 'k'\n			case: 'l'\n			case: 'm'\n			case: 'n'\n			case: 'o'\n			case: 'p'\n			case: 'q'\n			case: 'r'\n			case: 's'\n			case: 't'\n			case: 'u'\n			case: 'v'\n			case: 'w'\n			case: 'x'\n			case: 'y'\n			case: 'z'\n			case: 'A'\n			case: 'B'\n			case: 'C'\n			case: 'D'\n			case: 'E'\n			case: 'F'\n			case: 'G'\n			case: 'H'\n			case: 'I'\n			case: 'J'\n			case: 'K'\n			case: 'L'\n			case: 'M'\n			case: 'N'\n			case: 'O'\n			case: 'P'\n			case: 'Q'\n			case: 'R'\n			case: 'S'\n			case: 'T'\n			case: 'U'\n			case: 'V'\n			case: 'W'\n			case: 'X'\n			case: 'Y'\n			case: 'Z'\n				int adress = findvar(i);\n				string temp = convertToString(adress);\n				ouptut += temp;\n				do {i++;} while(statementString[i] == ' ' || statementString == '\\n' || statementString == '\\t' || (statementString >= 48 && statementString <= 57));\n				break;\n\n			//check for error\n			default:\n				cout << \"Remove me for final program!\\nI'm located in: string compoundPropositionalStatement::getUsableString() const\" << endl;\n				cout << \"There is an illegitamite character or the function is broken, you have a bug.\" << endl;\n				cout << \"The character in question is: \" << statementString[i] << endl;\n				pause();\n		}\n	}\n}\n\nbool isUnary(char Operator)\n{\n	switch(Operator)\n	{\n		case: NOT\n			return true;\n		default:\n			return false;\n	}\n}\n\nstring convertToString(int input)\n{\n	int copy = input;\n	string output;\n	\n	while(input > 0)\n	{\n		output += (removeFirstDidget(input));\n	}\n\n	if((copy / 10) * 10 == copy)\n	{\n		output += '0';\n	}\n\n	return output;\n}\n\nchar removeFirstDiget(int& input)\n{\n	int digets = pow(10, floor(log10(input)));\n	int output = input / digets;\n	input -= output * digets;\n	return (char)output + 48;\n}\n\nvoid compoundPropositionalStatement::setupVars()\n{\n}\n",
+			"file": "/C/Users/Benji/Documents/Code/main.cpp",
+			"file_size": 16144,
+			"file_write_time": 130736717281265928,
+			"settings":
+			{
+				"buffer_size": 15664,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "//Project: CSCI_3150_Propositional_Statements\n//contributions by theGerk\n\n#include 'notmin.h'\n#include <iostream>\n#include <cstring>\n#include <vector>\n#include <cmath>\nusing namespace std;\n\nstruct variable;										//a variable with a name and value\nclass operand;											//either a variable or an expression\nclass expression;										//a simple propositinonal statment with 2 operands and 1 operator\nclass compoundPropositionalStatement(string intput);	//an entire propositional statment\nclass operatorType;										//class for operator					NOT YET EXISTING			DOES IT NEED TO?\n\n//Defined Constants\n//operators\nchar NOT();\nchar AND();\nchar OR();\nchar IMPLIES();\nchar IMPLIED_BY();\nchar BICONDITIONAL();\nchar XOR();\nchar START_PARA();\nchar END_PARA();\n\n//constants\nchar S_TRUE();\nchar S_FALSE();\nchar TRUE_CHARACTER();\nchar FALSE_CHARACTER();\n\nint getInt(const &string input, int start);\n//uses cstring\n//gets an interger out of a string starting from any position\n\nint getInt(const &string input);\n//uses cstring\n//gets an interger out of a string starting from position 0.\n\nint getLengthOfInt(const string& input, unsigned int start);\n//uses cstring\n//uses a string and finds the length of a number starting at location start\n\nvoid pause();\n//ueses iostream\n//pauses program, useful for testing code\n\nbool isUnary(const char& Operator);\n//finds if the inputed Operator is unary and returns true if it is\n//returns false if it is not\n\nstring convertToString(int input);\n//uses cstring\n//takes the interger input and outputs it as a string in base 10\n\nchar removeFirstDiget(int& input);\n//uses cmath\n//takes off first diget from input\n//returns it as a character (one may add 48 to find the character value)\n\nbool isLetter(const char& input);\n//returns true if the character is a letter a-z or A-Z\n\nbool isOperater(const char& input);\n//returns true if the character is an operator (one of them used in the program)\n\nbool isNumber(const char& input);\n//returns true if the character is a number 0-9\n\nbool isBlankSpace(const char& input);\n//returns true if the character is a tab, space, or newline\n\nvoid clean(string& input);\n//uses cstring, iostream\n//cleans up a string\n//takes out loose parentheses\n//takes out parantheses that are pointlessly surrounding the entire string\n",
+			"file": "thegerk.h",
+			"file_size": 2362,
+			"file_write_time": 130737551301650494,
+			"settings":
+			{
+				"buffer_size": 2282,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "struct name\n{\n	int pos;\n	name *ptr;\n};\n\n\nint f(const int x)\n{\n	name *p1, *p2;\n\n	name element[x];\n	for(int i = 0; i < x; i++)\n	{\n		element[x].pos = x;\n		if(i < x - 1)\n			element[x].ptr = &element[x+1];\n		else\n			element[x].ptr = &element[0];\n	}\n\n\n	p1 = &element[0];\n\n\n	while(p1 != (*p1).ptr\n	{\n		p2 = (*p1).ptr;\n		p1 = (*(*p2).ptr).ptr;\n\n		(*p2).ptr = p1;\n	}\n	return (*p1).pos;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nint main()\n\n{\n	using namespace std;\n	int people;\n  cout << \"Input the number of people (the number of suitors in Savitch’s description).\" \n\n<< endl;\n	cin >> people;\n\n  cout << “The number of the last person is” << endl;\ncout << f(people) << endl;\n  \n\n  char dummy;\n\n  \n\n  cin >> dummy;\n\n  return 0;\n\n}",
+			"settings":
+			{
+				"buffer_size": 712,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "thegerk_compoundPropositionalStatement.cpp",
+			"settings":
+			{
+				"buffer_size": 2016,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n\nSecond day share:\nOn the 2nd day of the Forum my forum leader held up a note pad and asked us what color it was. It was orange and when someone said so the leader said, \"no it's not, it's brown\" and turning around the notpad he showed us the cardbord back to it, which was, infact, brown. He then explained, \"one person with a cirtian set of concernes has a cirtian view and another person with a different set of concerens or a diferent view may look at the same situation and see different things.\" And I realized that every time I had ever gotten in a fight with my sister I had felt holy justified in that I was right that infact for all I knew she was right as well, and that the entire arguments that we had wer just based on out prespective of situations, meaning, I was no more right that she was. My sister and I now don't argue very much and never fight. \n\nOptional:\nBefore the landmark forum I had to be the smartest person in any room. I would always be comparing myself with everyone else and asessing them to see how I was smarter. During the Forum I got that I didn't need to be the smartest and that I had no use in being the smartet and because of that I now am much freer to admit tha there are people far smarter than I and I don't need to constantly be comparing myself to others. This allows me to have peers and friends rather then seeing everyone else as beneath me.",
+			"settings":
+			{
+				"buffer_size": 1391,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "//Evenloveisalie - female (s)\n//MsJessieVice - male (r)",
+			"settings":
+			{
+				"buffer_size": 55,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Benji/Documents/POE build.txt",
+			"settings":
+			{
+				"buffer_size": 366,
+				"line_ending": "Windows",
+				"name": "https://www.poebuilder.com/character/AAAAAgEA9kjEW"
+			}
+		},
+		{
+			"file": "thegerk_clean.cpp",
+			"settings":
+			{
+				"buffer_size": 1142,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "//not taken\nstring getConsoleLine();\n//retrieves a line from console and returns it as a string\n\n//not taken\nstring getFileLine(std::ifstream& file);\n//retrives a line from inputed file stream and returns it as a string\n\n//not taken\nunsigned int location_of_last_operation(const &std::string statement);\n//finds the place in the string of the last operator.\n\n//not taken\nvoid removeCharFromString(std::string& input, unsigned int position);\n//remove the character at position given from the string and move the rest of the characters back 1 space to shorten the string.",
+			"file": "readme.txt",
+			"file_size": 573,
+			"file_write_time": 130737558631504241,
+			"settings":
+			{
+				"buffer_size": 569,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"plai",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"plain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundPropositionalStatement_findvar.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundPropositionalStatement_CONSTRUCTOR.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundpropositionalstatement.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_operand_setup.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_removeFirstDigit",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_getInt.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk.h",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundPropositionalStatement_getUsableString.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_isBlankSpace.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_isLetter.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/theGerk_isNumber.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_isOperator.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_isUnary.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_expression_setup.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundPropositionalStatement_setup.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/main.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_expression.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_operand.cpp",
+		"/C/Users/Benji/Documents/Code/1_9_Altman_Benjamin_HM18.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_variable.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_getInt.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_compoundPropositionalStatement_setup.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_compoundPropositionalStatement_CONSTRUCTOR.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_expression_setup.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_pause.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_operand_getValue.cpp",
+		"/C/Users/Benji/Documents/Code/thegerk_operand_setup",
+		"/C/Users/Benji/Documents/Code/thegerk_isUnary",
+		"/C/Users/Benji/Documents/Code/thegerk_convertToString"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"j",
+			"i",
+			"find",
+			"//not taken\n",
+			"//Benji - Complete\n",
+			"//Complete - Benji"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Benji/Documents/Code/main.cpp",
+					"settings":
+					{
+						"buffer_size": 15664,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1017,
+								1017
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6398.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "thegerk.h",
+					"settings":
+					{
+						"buffer_size": 2282,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2282,
+								2282
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "C:\\Users\\Benji\\Documents\\GitHub\\Logic",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"settings":
+					{
+						"buffer_size": 712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "thegerk_compoundPropositionalStatement.cpp",
+					"settings":
+					{
+						"buffer_size": 2016,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"settings":
+					{
+						"buffer_size": 1391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 55,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								55,
+								55
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/Benji/Documents/POE build.txt",
+					"settings":
+					{
+						"buffer_size": 366,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9,
+								9
+							]
+						],
+						"settings":
+						{
+							"auto_name": "https://www.poebuilder.com/character/AAAAAgEA9kjEW",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "thegerk_clean.cpp",
+					"settings":
+					{
+						"buffer_size": 1142,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "readme.txt",
+					"settings":
+					{
+						"buffer_size": 569,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								407,
+								407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
