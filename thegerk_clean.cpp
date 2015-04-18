@@ -4,6 +4,28 @@
 
 void clean(std::string& input)
 {
+	if(input[0] == START_PARA())
+	{
+		bool del = true;
+		int open = 1;
+		for(unsigned int i = 1; i < input.size(); i++)
+		{
+			if(input[i] == START_PARA())
+				open++;
+			else if(input[i] == END_PARA())
+				open--;
+
+			if(open == 0)
+			{
+				del = false;
+				break;
+			}
+		}
+
+		if(del)
+			input = input.substr(1, input.size() - 2);
+	}
+/*
 	int open = 0;
 	for(int i = 0; i < input.length(); i++)
 	{
@@ -26,4 +48,5 @@ void clean(std::string& input)
 		removeCharFromString(input.find_first_of(START_PARA()));
 				
 	}
+*/
 }
