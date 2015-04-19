@@ -17,7 +17,7 @@ void expression::setup(const string& input, const vector<variable>& vars)
 	right.setup(input.substr(seperator + 1, string::npos), vars);
 
 	//set up operator
-	Operator = substr[seperator];
+	Operator = input[seperator];
 
 	//look at what is in the left string, is it empty, does it just have parentheses?
 	if(isUnary(input[seperator]))

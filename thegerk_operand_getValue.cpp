@@ -1,6 +1,7 @@
 #include 'thegerk.h'
 #include 'thegerk_operand.cpp'
 #include 'thegerk_expression.cpp'
+#include 'thegerk_variable.cpp'
 using namespace std;
 bool operand::getValue() const
 {

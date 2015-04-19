@@ -16,7 +16,7 @@ class expression
 		void setup(const string& input, const vector<variable>& vars);
 		//sets up the expression (left operator and right)
 
-		//not taken
+		//Benji - Complete
 		bool evaluate() const;
 		//evaluaes the expression
 };
