@@ -11,31 +11,7 @@
 			"file": "thegerk_expression.cpp",
 			"settings":
 			{
-				"buffer_size": 670,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "thegerk_expression_evaluate.cpp",
-			"settings":
-			{
-				"buffer_size": 644,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "thegerk_expression_setup.cpp",
-			"settings":
-			{
-				"buffer_size": 1090,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "thegerk_operand_getValue.cpp",
-			"settings":
-			{
-				"buffer_size": 297,
+				"buffer_size": 681,
 				"line_ending": "Windows"
 			}
 		}
@@ -68,7 +44,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Benji/Documents/GitHub/Logic/readme.txt",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_expression_setup.cpp",
 		"/C/Users/Benji/Documents/Shares.txt",
+		"/C/Users/Benji/Documents/GitHub/Logic/CSCI_3150_Propositional_Statements.sublime-workspace",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_expression_evaluate.cpp",
+		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_operand_getValue.cpp",
 		"/C/Users/Benji/AppData/Local/Temp/Temp3_Archive.zip/__MACOSX/._ILP Audio Read Me.txt",
 		"/C/Users/Benji/AppData/Local/Temp/Temp2_Archive.zip/ILP Audio Read Me.txt",
 		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundpropositionalstatement.cpp",
@@ -82,7 +63,6 @@
 		"/C/Users/Benji/Documents/GitHub/Logic/theGerk_isNumber.cpp",
 		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_isOperator.cpp",
 		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_isUnary.cpp",
-		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_expression_setup.cpp",
 		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundPropositionalStatement_setup.cpp",
 		"/C/Users/Benji/Documents/GitHub/Logic/thegerk_compoundPropositionalStatement_CONSTRUCTOR.cpp",
 		"/C/Users/Benji/Documents/GitHub/Logic/main.cpp",
@@ -116,6 +96,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Benji",
 			"j",
 			"i",
 			"find",
@@ -139,7 +120,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -147,100 +128,21 @@
 					"file": "thegerk_expression.cpp",
 					"settings":
 					{
-						"buffer_size": 670,
+						"buffer_size": 681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								614,
-								639
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "thegerk_expression_evaluate.cpp",
-					"settings":
-					{
-						"buffer_size": 644,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								623,
-								623
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "thegerk_expression_setup.cpp",
-					"settings":
-					{
-						"buffer_size": 1090,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								442,
-								442
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "thegerk_operand_getValue.cpp",
-					"settings":
-					{
-						"buffer_size": 297,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								113,
-								113
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

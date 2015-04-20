@@ -78,3 +78,8 @@ void clean(string& input);
 //cleans up a string
 //takes out loose parentheses
 //takes out parantheses that are pointlessly surrounding the entire string
+
+unsigned int locationofLastOperation(const string& statement);
+//uses cstring
+//finds the place in the string of the last operator.
+

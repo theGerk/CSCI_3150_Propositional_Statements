@@ -9,7 +9,7 @@ using namespace std;
 void expression::setup(const string& input, const vector<variable>& vars)
 {
 	//Find last oppeartion to do and split apart string around.
-	const int seperator = location_of_last_operation(input);
+	const int seperator = locationOfLastOperation(input);
 
 
 	//split into substrings and feed to operands
@@ -23,10 +23,10 @@ void expression::setup(const string& input, const vector<variable>& vars)
 	if(isUnary(input[seperator]))
 	{
 		cout << "Remove me for final program!\nI'm located in: void expression::setup(const string& input, const vector<variable>& vars)" << endl;
-		cout << "Full string: \"" << input << endl;
-		cout << "Left string: \"" << input.substr(0, seperator) << endl;
+		cout << "Full string: \"" << input << '\"' << endl;
+		cout << "Left string: \"" << input.substr(0, seperator) << '\"' << endl;
 		cout << "Opeartor: " << input[seperator] << endl;
-		cout << "Right string: \"" < input.substr(seperator + 1, string::npos) << endl;
+		cout << "Right string: \"" < input.substr(seperator + 1, string::npos) << '\"' << endl;
 		pause();
 	}
 }

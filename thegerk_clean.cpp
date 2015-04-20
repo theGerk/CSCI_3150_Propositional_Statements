@@ -4,7 +4,7 @@
 
 void clean(std::string& input)
 {
-	if(input[0] == START_PARA())
+	while(input[0] == START_PARA())
 	{
 		bool del = true;
 		int open = 1;
@@ -24,6 +24,8 @@ void clean(std::string& input)
 
 		if(del)
 			input = input.substr(1, input.size() - 2);
+		else
+			break;
 	}
 /*
 	int open = 0;
