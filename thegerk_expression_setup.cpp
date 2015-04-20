@@ -13,9 +13,10 @@ void expression::setup(const string& input, const vector<variable>& vars)
 
 
 	//split into substrings and feed to operands
-	left.setup(input.substr(0, seperator), vars);
 	right.setup(input.substr(seperator + 1, string::npos), vars);
-
+	if(!isUnary(input[separtor]))		//if it is unary don't set up left side
+		left.setup(input.substr(0, seperator), vars);
+		
 	//set up operator
 	Operator = input[seperator];
 

@@ -4,35 +4,11 @@
 #include <cstring>
 #include <iostream>
 
-//operators
-#define NOT '!'
-#define AND '&'
-#define OR '|'
-#define IMPLIES '>'
-#define IMPLIED_BY '<'
-#define BICONDITINAL '='
-#define XOR '~'
-#define START_PARA '('
-#define END_PARA ')'
-
-//constants
-#define S_TRUE '1'
-#define S_FALSE '0'
-#define TRUE_CHARACTER 	'T'	//this will be determined later
-#define FALSE_CHARACTER 'F'	//this will be determined later
 
 void operand::setup(string input, const vector<variable> vars)
 {
 	clean(input);
 	
-	//empty
-	if(input[0] == NULL)
-	{
-		cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
-		cout << "The string, which is empty is: " << input << endl;
-		cout << "This should only happen if there is a unary operator! Otherwise a bug exists." << endl;
-		pause();		
-	}
 	
 	//constants
 	else if(input[0] == TRUE_CHARACTER() || input[0] == FALSE_CHARACTER())
@@ -41,16 +17,18 @@ void operand::setup(string input, const vector<variable> vars)
 		{
 			//constant
 			case: 1
-				constant = (input[0] == FALSE_CHARACTER) ? false : true;
+				constant = (input[0] == FALSE_CHARACTER()) ? false : true;
+				varInUse = 2;
 				break;
+			
 			//expression
 			default:
-			
 				cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
 				cout << "The string, which still has at least 1 epsression is: " << input << endl;
 				cout << "If there is more then one expression then a bug exists." << endl;
 				pause();
 				expr.setup(input, vars);
+				varInUse = 0;
 				break;
 		}
 	}
@@ -66,6 +44,7 @@ void operand::setup(string input, const vector<variable> vars)
 			cout << "If there is anything other then a number in the string you have a bug." << endl;\
 			pause();
 			var = &(vars[getInt(input)]);
+			varInUse = 1;
 		}
 		//expression
 		else
@@ -74,19 +53,21 @@ void operand::setup(string input, const vector<variable> vars)
 			cout << "If there is more then one expression then a bug exists." << endl;
 			pause();
 			expr.setup(input, vars);
+			varInUse = 0;
 		}
 
 
 	}
 	
-	//unary operators
+	//unary operator or a parenthese
 	else
 	{
 		cout << "Remove me for final program!\nI'm located in: void operand::setup(string input, const vector<variable>& vars)" << endl;
-		cout << "The string, which starts with a unary operator: " << input << endl;
-		cout << "If it is not starting with a unary operator you have a bug." << endl;
+		cout << "The string, which starts with a unary operator or parenthese: " << input << endl;
+		cout << "If it is not starting with a unary operator or a parenthese you have a bug." << endl;
 		pause()
 		expr.setup(input, vars);
+		varInUse = 0;
 	}
 	/*
 	//find which type of operator to set

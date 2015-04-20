@@ -7,7 +7,7 @@
 #define IMPLIES '>'
 #define IMPLIED_BY '<'
 #define BICONDITIONAL '='
-#define XOR '~'
+#define XOR '^'
 #define START_PARA '('
 #define END_PARA ')'
 

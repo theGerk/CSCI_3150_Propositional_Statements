@@ -80,6 +80,8 @@ void clean(string& input);
 //takes out parantheses that are pointlessly surrounding the entire string
 
 unsigned int locationofLastOperation(const string& statement);
-//uses cstring
+//uses cstring, vector
 //finds the place in the string of the last operator.
 
+unsigned int orderOfOperation(const char& Operator);
+//returns what level it is in order of operations
