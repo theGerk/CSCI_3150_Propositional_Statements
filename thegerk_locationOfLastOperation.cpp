@@ -2,7 +2,7 @@
 #include <cstring>
 #include <vector>
 
-findAllOperatorsOutsideOfParentheses(std::vector<unsigned int> operators, const std::string& statement)
+void findAllOperatorsOutsideOfParentheses(std::vector<unsigned int> &operators, const std::string& statement)
 {
 	for(unsigned int i = 0; i < statement.length(); i++)
 	{

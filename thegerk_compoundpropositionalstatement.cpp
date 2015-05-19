@@ -32,7 +32,10 @@ class compoundPropositionalStatement
 	//Benji - Complete
 	int findvar(int locationInStatmentString) const;
 	//returns -1 if it is not found
-	//finds the specific variable in the vector and returns its location in said vector
+	//finds the specific variable in the vector and returns its location in said
+
+	//Benji
+	
 
 	public:
 		//public member functions
